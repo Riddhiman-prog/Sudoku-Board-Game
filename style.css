@@ -1,0 +1,323 @@
+/* Overall Page */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+background: linear-gradient(135deg, #9c5e5e00, #764ba2); /* Normal space now */
+
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* Sudoku Timer */
+#timer {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Board Wrapper */
+#sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  gap: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Sudoku Cells */
+.cell {
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.cell:hover,
+.cell:focus {
+  transform: scale(1.1);
+  background-color: #f0f8ff;
+}
+
+/* Prefilled Cells */
+.prefilled {
+  background-color: #d1d1d1;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Buttons */
+button {
+  margin: 15px 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #18b004;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Highlighted incorrect cells */
+.cell[style*="background-color: rgb(248, 215, 218)"] {
+  animation: shake 0.3s ease-in-out;
+}
+
+/* Shake animation for error */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+#sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+    justify-content: center;
+
+  gap: 2px;
+  margin: 20px 0;
+}
+
+
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  animation: fadeIn 1.5s ease-in-out forwards, float 2.5s ease-in-out infinite;
+  opacity: 0; /* hidden before fade-in */
+}
+
+.title-container .logo {
+  width: 40px;
+  height: 40px;
+  animation: float 2.5s ease-in-out infinite;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.title-container h1 {
+  font-size: 2rem;
+  color: #222;
+  animation: float 2.5s ease-in-out infinite;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s, text-shadow 0.3s;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Glow effect on hover */
+.title-container:hover .logo {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px #ffcb05);
+}
+
+.title-container:hover h1 {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px #ffcb05;
+}
+
+
+
+#leaderboard-container {
+  margin-top: 30px;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#leaderboard-container h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#leaderboard-list {
+  padding-left: 0;
+  list-style: decimal inside;
+  text-align: left;
+}
+
+
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode input {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #555;
+}
+
+
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode .cell {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #555;
+}
+
+
+
+
+
+/* 🌙 Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Sudoku grid cells */
+body.dark-mode .cell {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #666;
+}
+
+/* Prefilled cells */
+body.dark-mode .prefilled {
+  background-color: #2a2a2a;
+  color: lightgray;
+}
+
+/* Buttons */
+body.dark-mode button {
+  background-color: #333;
+  color: white;
+  border: 1px solid #777;
+}
+
+/* Select dropdowns */
+body.dark-mode select {
+  background-color: #333;
+  color: white;
+  border: 1px solid #777;
+}
+
+/* Input fields (e.g., font size) */
+body.dark-mode input[type="number"],
+body.dark-mode input[type="text"] {
+  background-color: #2b2b2b;
+  color: white;
+  border: 1px solid #666;
+}
+
+/* Timer, Leaderboard, and other headings */
+body.dark-mode #timer,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #ffffff;
+}
+
+/* Leaderboard container */
+body.dark-mode #leaderboard {
+  background-color: #1c1c1c;
+  color: white;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+
+
+
+/* 🌙 Dark Mode Support for Footer */
+body.dark-mode footer {
+  background-color: #1a1a1a;
+  color: white;
+  border-top: 1px solid #444;
+}
+
+body.dark-mode .footer-middle a,
+body.dark-mode .footer-left p,
+body.dark-mode .footer-left h3 {
+  color: white;
+}
+
+body.dark-mode .footer-middle a:hover {
+  color: #ccc;
+}
+
+
+
+
+
+footer {
+  width: 100vw;
+  background-color: black;
+  padding: 15px 0;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* spacing between icons */
+}
+
+.footer-content .social-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.footer-content .social-icon img:hover {
+  transform: scale(1.1);
+}
+
+
+
